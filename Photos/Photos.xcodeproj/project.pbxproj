@@ -16,6 +16,7 @@
 		1B6AE18D27E816CF002BB180 /* PhotosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AE18C27E816CF002BB180 /* PhotosTests.swift */; };
 		1B6AE19727E816CF002BB180 /* PhotosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AE19627E816CF002BB180 /* PhotosUITests.swift */; };
 		1B6AE19927E816CF002BB180 /* PhotosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AE19827E816CF002BB180 /* PhotosUITestsLaunchTests.swift */; };
+		BCAB10B127E99934000064E2 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAB10B027E99934000064E2 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		1B6AE19227E816CF002BB180 /* PhotosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6AE19627E816CF002BB180 /* PhotosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosUITests.swift; sourceTree = "<group>"; };
 		1B6AE19827E816CF002BB180 /* PhotosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BCAB10B027E99934000064E2 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				1B6AE17527E816CD002BB180 /* AppDelegate.swift */,
 				1B6AE17727E816CD002BB180 /* SceneDelegate.swift */,
 				1B6AE17927E816CD002BB180 /* ViewController.swift */,
+				BCAB10B027E99934000064E2 /* PhotoCollectionViewCell.swift */,
 				1B6AE17B27E816CD002BB180 /* Main.storyboard */,
 				1B6AE17E27E816CF002BB180 /* Assets.xcassets */,
 				1B6AE18027E816CF002BB180 /* LaunchScreen.storyboard */,
@@ -260,6 +263,7 @@
 			files = (
 				1B6AE17A27E816CD002BB180 /* ViewController.swift in Sources */,
 				1B6AE17627E816CD002BB180 /* AppDelegate.swift in Sources */,
+				BCAB10B127E99934000064E2 /* PhotoCollectionViewCell.swift in Sources */,
 				1B6AE17827E816CD002BB180 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

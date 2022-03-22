@@ -50,6 +50,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x6T-hG-mZR" secondAttribute="trailing" id="NEw-ne-7QI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="PhotoCollectionView" destination="x6T-hG-mZR" id="o5r-qT-4dc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,21 +8,23 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var PhotoCollectionView: UICollectionView!
+    var numberOfItem = 40
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        PhotoCollectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
     }
-    
-    var numberOfItem = 40
 }
+
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfItem
     }
     
-    //customCellIdentifier
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCellIdentifier", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath)
         cell.backgroundColor = getRandomColor()
         
         return cell
