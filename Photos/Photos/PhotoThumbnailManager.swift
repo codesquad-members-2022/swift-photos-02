@@ -6,7 +6,20 @@
 //
 
 import Foundation
+import Photos
+import UIKit
 
 class PhotoThumbnailManager {
     
+    init?() {
+        
+    }
+    
+    private func getFetchResult() {
+        
+    }
+    
+    func getThumbnailImages(_ completionHandler: @escaping (UIImage?, [AnyHashable: Any])->Void) {
+        
+    }
 }
