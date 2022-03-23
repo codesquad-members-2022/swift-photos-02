@@ -9,12 +9,13 @@ import Foundation
 import Photos
 import UIKit
 
-class PhotoThumbnailManager {
+class PhotoThumbnailManager: NSObject, PHPhotoLibraryChangeObserver {
     
     private let cachingImageManager = PHCachingImageManager()
     
     private var thumbnails = [UIImage]()
     private var phAssets = [PHAsset]()
+    private let didUpdate: (() -> Void)?
     
     var thumbnailsCount: Int {
         thumbnails.count
@@ -23,6 +24,14 @@ class PhotoThumbnailManager {
     subscript(index: Int) -> UIImage? {
         guard 0 <= index, index < thumbnails.count else { return nil }
         return thumbnails[index]
+    }
+    
+    init(didUpdateHandler: @escaping (() -> Void)) {
+        self.didUpdate = didUpdateHandler
+        super.init()
+        
+        self.updateThumbnailState()
+        PHPhotoLibrary.shared().register(self)
     }
     
     private func checkAuthorization(_ completionHandler: @escaping (Bool)->Void) {
@@ -37,7 +46,11 @@ class PhotoThumbnailManager {
         }
     }
     
-    func setImages(_ completionHandler: @escaping () -> Void) {
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        updateThumbnailState()
+    }
+    
+    private func updateThumbnailState() {
         // 1. 인증을 비동기로 체크
         checkAuthorization { granted in
             guard granted else { return }
@@ -46,7 +59,7 @@ class PhotoThumbnailManager {
             self.fetchPHAssets()
             
             // -> 3. PHAsset을 가지고 Image를 비동기로 fetch해서 프로퍼티에 저장
-            self.fetchThumbnailImages(completionHandler)
+            self.fetchThumbnailImages()
         }
     }
     
@@ -59,7 +72,7 @@ class PhotoThumbnailManager {
         }
     }
     
-    private func fetchThumbnailImages(_ completionHandler: @escaping () -> Void) {
+    private func fetchThumbnailImages() {
         self.thumbnails.removeAll()
         
         let option = PHImageRequestOptions()
@@ -79,7 +92,7 @@ class PhotoThumbnailManager {
                     guard let lastIndex = self?.phAssets.count else { return }
                     
                     if index == lastIndex-1 {
-                        completionHandler()
+                        self?.didUpdate?()
                     }
                 }
         }

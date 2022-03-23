@@ -11,15 +11,12 @@ class PhotoViewController: UIViewController {
     @IBOutlet weak var PhotoCollectionView: UICollectionView!
     
     lazy private var photoThumbnailManager: PhotoThumbnailManager = {
-        let photoThumbnailManager = PhotoThumbnailManager()
-        
-        photoThumbnailManager.setImages {
-            print("Set image complete!")
+        let photoThumbnailManager = PhotoThumbnailManager {
             DispatchQueue.main.async {
-//                self.PhotoCollectionView.reloadData()
+                self.PhotoCollectionView.reloadData()
             }
         }
-        
+
         return photoThumbnailManager
     }()
     
