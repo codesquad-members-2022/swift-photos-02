@@ -20,11 +20,12 @@ class PhotosTests: XCTestCase {
         
         let promise = expectation(description: "Image Fetch Success")
         
-        manager.getThumbnailImages {
-            XCTAssertTrue(manager.thumbnailsCount > 0)
+        manager.setImages {
             promise.fulfill()
         }
         
         wait(for: [promise], timeout: 5)
+        
+        XCTAssertTrue(manager.thumbnailsCount > 0)
     }
 }
