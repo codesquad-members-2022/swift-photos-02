@@ -24,7 +24,7 @@ class PhotosTests: XCTestCase {
             promise.fulfill()
         }
         
-        wait(for: [promise], timeout: 5)
+        wait(for: [promise], timeout: 1)
         
         XCTAssertTrue(manager.thumbnailsCount > 0)
     }

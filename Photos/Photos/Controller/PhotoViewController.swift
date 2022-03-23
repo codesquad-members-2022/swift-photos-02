@@ -9,20 +9,29 @@ import UIKit
 
 class PhotoViewController: UIViewController {
     @IBOutlet weak var PhotoCollectionView: UICollectionView!
-    var numberOfItem = 40
     
-    private let photoThumbnailManager = PhotoThumbnailManager()
+    lazy private var photoThumbnailManager: PhotoThumbnailManager = {
+        let photoThumbnailManager = PhotoThumbnailManager()
+        
+        photoThumbnailManager.setImages {
+            print("Set image complete!")
+            DispatchQueue.main.async {
+//                self.PhotoCollectionView.reloadData()
+            }
+        }
+        
+        return photoThumbnailManager
+    }()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         PhotoCollectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
-        
-        photoThumbnailManager.setImages {
-            DispatchQueue.main.async {
-                self.PhotoCollectionView.reloadData()
-            }
-        }
     }
 }
 
@@ -33,18 +42,10 @@ extension PhotoViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell,
-                let image = photoThumbnailManager[indexPath.row] else { return PhotoCollectionViewCell() }
+              let image = photoThumbnailManager[indexPath.row] else { return PhotoCollectionViewCell() }
+        
         cell.setImage(image)
         
         return cell
-    }
-    
-    private func getRandomColor() -> UIColor {
-        UIColor(
-            red: CGFloat(Float.random(in: 0...1)),
-            green: CGFloat(Float.random(in: 0...1)),
-            blue: CGFloat(Float.random(in: 0...1)),
-            alpha: 1.0
-        )
     }
 }

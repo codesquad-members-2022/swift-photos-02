@@ -61,17 +61,24 @@ class PhotoThumbnailManager {
     
     private func fetchThumbnailImages(_ completionHandler: @escaping () -> Void) {
         self.thumbnails.removeAll()
+        
+        let option = PHImageRequestOptions()
+        option.isSynchronous = true
+        
         for (index, asset) in self.phAssets.enumerated() {
-            self.cachingImageManager.requestImage(
+            
+            self.cachingImageManager.requestImage (
                 for: asset,
                 targetSize: CGSize(width: 100, height: 100),
                 contentMode: .aspectFill,
-                options: nil) { image, _ in
+                options: option) { [weak self] image, _ in
                     if let image = image {
-                        self.thumbnails.append(image)
+                        self?.thumbnails.append(image)
                     }
                     
-                    if index == self.phAssets.count-1 {
+                    guard let lastIndex = self?.phAssets.count else { return }
+                    
+                    if index == lastIndex-1 {
                         completionHandler()
                     }
                 }
