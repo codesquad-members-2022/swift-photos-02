@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PhotoViewController: UIViewController {
     @IBOutlet weak var PhotoCollectionView: UICollectionView!
     var numberOfItem = 40
     
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoThumbnailManager.thumbnailsCount
     }
