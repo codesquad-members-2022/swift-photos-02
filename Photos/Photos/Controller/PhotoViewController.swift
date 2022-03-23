@@ -18,7 +18,7 @@ class PhotoViewController: UIViewController {
         
         PhotoCollectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         
-        photoThumbnailManager.getThumbnailImages {
+        photoThumbnailManager.setImages {
             DispatchQueue.main.async {
                 self.PhotoCollectionView.reloadData()
             }
@@ -32,8 +32,9 @@ extension PhotoViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath)
-        cell.backgroundColor = getRandomColor()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell,
+                let image = photoThumbnailManager[indexPath.row] else { return PhotoCollectionViewCell() }
+        cell.setImage(image)
         
         return cell
     }
