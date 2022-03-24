@@ -51,6 +51,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="PhotoApp" id="n40-f2-uoV">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="plus" catalog="system" id="UGH-uO-Zb7">
+                            <connections>
+                                <action selector="addTouched:" destination="BYZ-38-t0r" id="xKY-wB-f5R"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="Jso-WJ-vAZ"/>
                     </navigationItem>
                     <connections>
@@ -59,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="875" y="119"/>
+            <point key="canvasLocation" x="910" y="-49"/>
         </scene>
         <!--PhotoApp-->
         <scene sceneID="H0V-jX-JxG">
@@ -81,6 +86,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

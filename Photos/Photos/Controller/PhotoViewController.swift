@@ -19,6 +19,16 @@ class PhotoViewController: UIViewController {
 
         return photoThumbnailManager
     }()
+
+    @IBAction func addTouched(_ sender: UIBarButtonItem) {
+        // 나와라 두들
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 110, height: 50)
+        let doodleVC = DoodleViewController(collectionViewLayout: flowLayout)
+        let doodleNavigationVC = UINavigationController(rootViewController: doodleVC)
+        
+        present(doodleNavigationVC, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

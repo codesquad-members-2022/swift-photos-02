@@ -18,6 +18,7 @@
 		1B6AE18D27E816CF002BB180 /* PhotosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AE18C27E816CF002BB180 /* PhotosTests.swift */; };
 		1B6AE19727E816CF002BB180 /* PhotosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AE19627E816CF002BB180 /* PhotosUITests.swift */; };
 		1B6AE19927E816CF002BB180 /* PhotosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AE19827E816CF002BB180 /* PhotosUITestsLaunchTests.swift */; };
+		BC9E8DBC27EC483200D65C41 /* DoodleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E8DBB27EC483200D65C41 /* DoodleViewController.swift */; };
 		BCAB10B127E99934000064E2 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAB10B027E99934000064E2 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		1B6AE19227E816CF002BB180 /* PhotoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6AE19627E816CF002BB180 /* PhotosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosUITests.swift; sourceTree = "<group>"; };
 		1B6AE19827E816CF002BB180 /* PhotosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BC9E8DBB27EC483200D65C41 /* DoodleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleViewController.swift; sourceTree = "<group>"; };
 		BCAB10B027E99934000064E2 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				1B6AE17927E816CD002BB180 /* PhotoViewController.swift */,
+				BC9E8DBB27EC483200D65C41 /* DoodleViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B22A6B027E99E980025CFF9 /* PhotoThumbnailManager.swift in Sources */,
+				BC9E8DBC27EC483200D65C41 /* DoodleViewController.swift in Sources */,
 				1B6AE17A27E816CD002BB180 /* PhotoViewController.swift in Sources */,
 				1B6AE17627E816CD002BB180 /* AppDelegate.swift in Sources */,
 				BCAB10B127E99934000064E2 /* PhotoCollectionViewCell.swift in Sources */,
