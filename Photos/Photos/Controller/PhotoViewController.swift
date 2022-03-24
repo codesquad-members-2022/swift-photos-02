@@ -20,11 +20,6 @@ class PhotoViewController: UIViewController {
         return photoThumbnailManager
     }()
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

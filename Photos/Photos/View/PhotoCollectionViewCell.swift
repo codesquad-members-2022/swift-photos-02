@@ -9,6 +9,7 @@ import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     static let identifier = "PhotoCollectionViewCell"
+    static let imageSize = CGSize(width: 100, height: 100)
     
     private let imageView = UIImageView()
     
@@ -19,7 +20,9 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        return nil
+        super.init(coder: coder)
+        self.contentView.addSubview(imageView)
+        imageView.frame = self.bounds
     }
     
     func setImage(_ image: UIImage) {

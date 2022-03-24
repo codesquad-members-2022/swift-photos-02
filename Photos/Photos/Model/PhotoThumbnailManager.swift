@@ -12,6 +12,11 @@ import UIKit
 class PhotoThumbnailManager: NSObject, PHPhotoLibraryChangeObserver {
     
     private let cachingImageManager = PHCachingImageManager()
+    private let option: PHImageRequestOptions = {
+        let option = PHImageRequestOptions()
+        option.isSynchronous = true
+        return option
+    }()
     
     private var thumbnails = [UIImage]()
     private var phAssets = [PHAsset]()
@@ -58,7 +63,10 @@ class PhotoThumbnailManager: NSObject, PHPhotoLibraryChangeObserver {
             // -> 2. PHAsset를 fetch해서 인스턴스 프로퍼티에 저장
             self.fetchPHAssets()
             
-            // -> 3. PHAsset을 가지고 Image를 비동기로 fetch해서 프로퍼티에 저장
+            // -> 3. fetch한 PHAsset에 대하여 캐싱을 시작
+            self.startCaching()
+            
+            // -> 4. 캐싱된 Image를 fetch해서 프로퍼티에 저장
             self.fetchThumbnailImages()
         }
     }
@@ -72,17 +80,23 @@ class PhotoThumbnailManager: NSObject, PHPhotoLibraryChangeObserver {
         }
     }
     
+    private func startCaching() {
+        cachingImageManager.startCachingImages(
+            for: phAssets,
+            targetSize: PhotoCollectionViewCell.imageSize,
+            contentMode: .aspectFill,
+            options: option
+        )
+    }
+    
     private func fetchThumbnailImages() {
         self.thumbnails.removeAll()
-        
-        let option = PHImageRequestOptions()
-        option.isSynchronous = true
         
         for (index, asset) in self.phAssets.enumerated() {
             
             self.cachingImageManager.requestImage (
                 for: asset,
-                targetSize: CGSize(width: 100, height: 100),
+                targetSize: PhotoCollectionViewCell.imageSize,
                 contentMode: .aspectFill,
                 options: option) { [weak self] image, _ in
                     if let image = image {
