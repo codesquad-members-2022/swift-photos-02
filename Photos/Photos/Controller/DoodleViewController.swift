@@ -14,9 +14,9 @@ class DoodleViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(DoodleCollectionViewCell.self, forCellWithReuseIdentifier: DoodleCollectionViewCell.identifier)
         
-        self.collectionView.backgroundView?.backgroundColor = .darkGray
+        self.collectionView.backgroundColor = .gray
         self.navigationItem.title = "Doodles"
         let closeButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
         self.navigationItem.setRightBarButton(closeButton, animated: false)
@@ -41,7 +41,7 @@ class DoodleViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DoodleCollectionViewCell.identifier, for: indexPath)
         
         cell.contentView.backgroundColor = .blue
     

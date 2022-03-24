@@ -26,7 +26,7 @@ class PhotoViewController: UIViewController {
         flowLayout.itemSize = CGSize(width: 110, height: 50)
         let doodleVC = DoodleViewController(collectionViewLayout: flowLayout)
         let doodleNavigationVC = UINavigationController(rootViewController: doodleVC)
-        
+        doodleNavigationVC.modalPresentationStyle = .fullScreen
         present(doodleNavigationVC, animated: true)
     }
     
