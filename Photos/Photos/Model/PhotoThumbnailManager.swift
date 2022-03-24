@@ -7,7 +7,6 @@
 
 import Foundation
 import Photos
-import UIKit
 
 class PhotoThumbnailManager: NSObject, PHPhotoLibraryChangeObserver {
     
@@ -18,17 +17,17 @@ class PhotoThumbnailManager: NSObject, PHPhotoLibraryChangeObserver {
         return option
     }()
     
-    private var thumbnails = [UIImage]()
+    private var thumbnailData = [Data]()
     private var phAssets = [PHAsset]()
     private let didUpdate: (() -> Void)?
     
     var thumbnailsCount: Int {
-        thumbnails.count
+        thumbnailData.count
     }
     
-    subscript(index: Int) -> UIImage? {
-        guard 0 <= index, index < thumbnails.count else { return nil }
-        return thumbnails[index]
+    subscript(index: Int) -> Data? {
+        guard 0 <= index, index < thumbnailData.count else { return nil }
+        return thumbnailData[index]
     }
     
     init(didUpdateHandler: @escaping (() -> Void)) {
@@ -67,7 +66,7 @@ class PhotoThumbnailManager: NSObject, PHPhotoLibraryChangeObserver {
             self.startCaching()
             
             // -> 4. 캐싱된 Image를 fetch해서 프로퍼티에 저장
-            self.fetchThumbnailImages()
+            self.fetchThumbnailData()
         }
     }
     
@@ -89,18 +88,15 @@ class PhotoThumbnailManager: NSObject, PHPhotoLibraryChangeObserver {
         )
     }
     
-    private func fetchThumbnailImages() {
-        self.thumbnails.removeAll()
+    private func fetchThumbnailData() {
+        self.thumbnailData.removeAll()
         
         for (index, asset) in self.phAssets.enumerated() {
-            
-            self.cachingImageManager.requestImage (
+            self.cachingImageManager.requestImageDataAndOrientation(
                 for: asset,
-                targetSize: PhotoCollectionViewCell.imageSize,
-                contentMode: .aspectFill,
-                options: option) { [weak self] image, _ in
-                    if let image = image {
-                        self?.thumbnails.append(image)
+                options: option) { [weak self] data, dataUTI, orientation, info in
+                    if let data = data {
+                        self?.thumbnailData.append(data)
                     }
                     
                     guard let lastIndex = self?.phAssets.count else { return }

@@ -33,10 +33,15 @@ extension PhotoViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell,
-              let image = photoThumbnailManager[indexPath.row] else { return PhotoCollectionViewCell() }
+        guard
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell,
+            let thumbnailData = photoThumbnailManager[indexPath.row],
+            let thumbnail = UIImage(data: thumbnailData)
+        else {
+            return PhotoCollectionViewCell()
+        }
         
-        cell.setImage(image)
+        cell.setImage(thumbnail)
         
         return cell
     }
