@@ -19,10 +19,15 @@ class PhotoViewController: UIViewController {
 
         return photoThumbnailManager
     }()
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
-        
+
+    @IBAction func addTouched(_ sender: UIBarButtonItem) {
+        // 나와라 두들
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 110, height: 50)
+        let doodleVC = DoodleViewController(collectionViewLayout: flowLayout)
+        let doodleNavigationVC = UINavigationController(rootViewController: doodleVC)
+        doodleNavigationVC.modalPresentationStyle = .fullScreen
+        present(doodleNavigationVC, animated: true)
     }
     
     override func viewDidLoad() {
@@ -38,10 +43,15 @@ extension PhotoViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell,
-              let image = photoThumbnailManager[indexPath.row] else { return PhotoCollectionViewCell() }
+        guard
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell,
+            let thumbnailData = photoThumbnailManager[indexPath.row],
+            let thumbnail = UIImage(data: thumbnailData)
+        else {
+            return PhotoCollectionViewCell()
+        }
         
-        cell.setImage(image)
+        cell.setImage(thumbnail)
         
         return cell
     }

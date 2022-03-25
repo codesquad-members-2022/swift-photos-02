@@ -7,23 +7,27 @@
 
 import Foundation
 import Photos
-import UIKit
 
 class PhotoThumbnailManager: NSObject, PHPhotoLibraryChangeObserver {
     
     private let cachingImageManager = PHCachingImageManager()
+    private let option: PHImageRequestOptions = {
+        let option = PHImageRequestOptions()
+        option.isSynchronous = true
+        return option
+    }()
     
-    private var thumbnails = [UIImage]()
+    private var thumbnailData = [Data]()
     private var phAssets = [PHAsset]()
     private let didUpdate: (() -> Void)?
     
     var thumbnailsCount: Int {
-        thumbnails.count
+        thumbnailData.count
     }
     
-    subscript(index: Int) -> UIImage? {
-        guard 0 <= index, index < thumbnails.count else { return nil }
-        return thumbnails[index]
+    subscript(index: Int) -> Data? {
+        guard 0 <= index, index < thumbnailData.count else { return nil }
+        return thumbnailData[index]
     }
     
     init(didUpdateHandler: @escaping (() -> Void)) {
@@ -58,8 +62,11 @@ class PhotoThumbnailManager: NSObject, PHPhotoLibraryChangeObserver {
             // -> 2. PHAsset를 fetch해서 인스턴스 프로퍼티에 저장
             self.fetchPHAssets()
             
-            // -> 3. PHAsset을 가지고 Image를 비동기로 fetch해서 프로퍼티에 저장
-            self.fetchThumbnailImages()
+            // -> 3. fetch한 PHAsset에 대하여 캐싱을 시작
+            self.startCaching()
+            
+            // -> 4. 캐싱된 Image를 fetch해서 프로퍼티에 저장
+            self.fetchThumbnailData()
         }
     }
     
@@ -72,21 +79,24 @@ class PhotoThumbnailManager: NSObject, PHPhotoLibraryChangeObserver {
         }
     }
     
-    private func fetchThumbnailImages() {
-        self.thumbnails.removeAll()
-        
-        let option = PHImageRequestOptions()
-        option.isSynchronous = true
+    private func startCaching() {
+        cachingImageManager.startCachingImages(
+            for: phAssets,
+            targetSize: PhotoCollectionViewCell.imageSize,
+            contentMode: .aspectFill,
+            options: option
+        )
+    }
+    
+    private func fetchThumbnailData() {
+        self.thumbnailData.removeAll()
         
         for (index, asset) in self.phAssets.enumerated() {
-            
-            self.cachingImageManager.requestImage (
+            self.cachingImageManager.requestImageDataAndOrientation(
                 for: asset,
-                targetSize: CGSize(width: 100, height: 100),
-                contentMode: .aspectFill,
-                options: option) { [weak self] image, _ in
-                    if let image = image {
-                        self?.thumbnails.append(image)
+                options: option) { [weak self] data, dataUTI, orientation, info in
+                    if let data = data {
+                        self?.thumbnailData.append(data)
                     }
                     
                     guard let lastIndex = self?.phAssets.count else { return }

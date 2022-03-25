@@ -18,6 +18,16 @@
 		1B6AE18D27E816CF002BB180 /* PhotosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AE18C27E816CF002BB180 /* PhotosTests.swift */; };
 		1B6AE19727E816CF002BB180 /* PhotosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AE19627E816CF002BB180 /* PhotosUITests.swift */; };
 		1B6AE19927E816CF002BB180 /* PhotosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AE19827E816CF002BB180 /* PhotosUITestsLaunchTests.swift */; };
+		BC9E8DBC27EC483200D65C41 /* DoodleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E8DBB27EC483200D65C41 /* DoodleViewController.swift */; };
+		BC9E8DBE27EC4E7B00D65C41 /* DoodleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E8DBD27EC4E7B00D65C41 /* DoodleCollectionViewCell.swift */; };
+		BC9E8DC027EC50AC00D65C41 /* DoodleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E8DBF27EC50AC00D65C41 /* DoodleManager.swift */; };
+		BC9E8DC127EC50AC00D65C41 /* DoodleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E8DBF27EC50AC00D65C41 /* DoodleManager.swift */; };
+		BC9E8DC327EC50E400D65C41 /* doodle.json in Resources */ = {isa = PBXBuildFile; fileRef = BC9E8DC227EC50E400D65C41 /* doodle.json */; };
+		BC9E8DC427EC50E400D65C41 /* doodle.json in Resources */ = {isa = PBXBuildFile; fileRef = BC9E8DC227EC50E400D65C41 /* doodle.json */; };
+		BC9E8DC627EC514500D65C41 /* Doodle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E8DC527EC514500D65C41 /* Doodle.swift */; };
+		BC9E8DC727EC514500D65C41 /* Doodle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E8DC527EC514500D65C41 /* Doodle.swift */; };
+		BC9E8DC927EC52F900D65C41 /* DoodleManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E8DC827EC52F900D65C41 /* DoodleManagerTests.swift */; };
+		BC9E8DCA27EC54A500D65C41 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAB10B027E99934000064E2 /* PhotoCollectionViewCell.swift */; };
 		BCAB10B127E99934000064E2 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAB10B027E99934000064E2 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +63,12 @@
 		1B6AE19227E816CF002BB180 /* PhotoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6AE19627E816CF002BB180 /* PhotosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosUITests.swift; sourceTree = "<group>"; };
 		1B6AE19827E816CF002BB180 /* PhotosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BC9E8DBB27EC483200D65C41 /* DoodleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleViewController.swift; sourceTree = "<group>"; };
+		BC9E8DBD27EC4E7B00D65C41 /* DoodleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleCollectionViewCell.swift; sourceTree = "<group>"; };
+		BC9E8DBF27EC50AC00D65C41 /* DoodleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleManager.swift; sourceTree = "<group>"; };
+		BC9E8DC227EC50E400D65C41 /* doodle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = doodle.json; sourceTree = "<group>"; };
+		BC9E8DC527EC514500D65C41 /* Doodle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doodle.swift; sourceTree = "<group>"; };
+		BC9E8DC827EC52F900D65C41 /* DoodleManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleManagerTests.swift; sourceTree = "<group>"; };
 		BCAB10B027E99934000064E2 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				1B6AE18C27E816CF002BB180 /* PhotosTests.swift */,
+				BC9E8DC827EC52F900D65C41 /* DoodleManagerTests.swift */,
 			);
 			path = PhotosTests;
 			sourceTree = "<group>";
@@ -133,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				1B6AE17927E816CD002BB180 /* PhotoViewController.swift */,
+				BC9E8DBB27EC483200D65C41 /* DoodleViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -141,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				1B22A6AF27E99E980025CFF9 /* PhotoThumbnailManager.swift */,
+				BC9E8DBF27EC50AC00D65C41 /* DoodleManager.swift */,
+				BC9E8DC527EC514500D65C41 /* Doodle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -151,6 +171,7 @@
 				1B6AE17B27E816CD002BB180 /* Main.storyboard */,
 				1B6AE18027E816CF002BB180 /* LaunchScreen.storyboard */,
 				BCAB10B027E99934000064E2 /* PhotoCollectionViewCell.swift */,
+				BC9E8DBD27EC4E7B00D65C41 /* DoodleCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,6 +183,7 @@
 				1B6AE17727E816CD002BB180 /* SceneDelegate.swift */,
 				1B6AE17E27E816CF002BB180 /* Assets.xcassets */,
 				1B6AE18327E816CF002BB180 /* Info.plist */,
+				BC9E8DC227EC50E400D65C41 /* doodle.json */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -272,6 +294,7 @@
 			files = (
 				1B6AE18227E816CF002BB180 /* LaunchScreen.storyboard in Resources */,
 				1B6AE17F27E816CF002BB180 /* Assets.xcassets in Resources */,
+				BC9E8DC327EC50E400D65C41 /* doodle.json in Resources */,
 				1B6AE17D27E816CD002BB180 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC9E8DC427EC50E400D65C41 /* doodle.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,10 +321,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC9E8DC027EC50AC00D65C41 /* DoodleManager.swift in Sources */,
 				1B22A6B027E99E980025CFF9 /* PhotoThumbnailManager.swift in Sources */,
+				BC9E8DBC27EC483200D65C41 /* DoodleViewController.swift in Sources */,
+				BC9E8DC627EC514500D65C41 /* Doodle.swift in Sources */,
 				1B6AE17A27E816CD002BB180 /* PhotoViewController.swift in Sources */,
 				1B6AE17627E816CD002BB180 /* AppDelegate.swift in Sources */,
 				BCAB10B127E99934000064E2 /* PhotoCollectionViewCell.swift in Sources */,
+				BC9E8DBE27EC4E7B00D65C41 /* DoodleCollectionViewCell.swift in Sources */,
 				1B6AE17827E816CD002BB180 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,7 +338,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B6AE18D27E816CF002BB180 /* PhotosTests.swift in Sources */,
+				BC9E8DC927EC52F900D65C41 /* DoodleManagerTests.swift in Sources */,
 				1B22A6B127E9A38B0025CFF9 /* PhotoThumbnailManager.swift in Sources */,
+				BC9E8DC727EC514500D65C41 /* Doodle.swift in Sources */,
+				BC9E8DC127EC50AC00D65C41 /* DoodleManager.swift in Sources */,
+				BC9E8DCA27EC54A500D65C41 /* PhotoCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

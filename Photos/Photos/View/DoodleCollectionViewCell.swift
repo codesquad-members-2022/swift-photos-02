@@ -1,15 +1,15 @@
 //
-//  CollectionViewCell.swift
-//  Photos
+//  DoodleCollectionViewCell.swift
+//  PhotoApp
 //
-//  Created by Bumgeun Song on 2022/03/22.
+//  Created by Bumgeun Song on 2022/03/24.
 //
 
 import UIKit
 
-class PhotoCollectionViewCell: UICollectionViewCell {
-    static let identifier = "PhotoCollectionViewCell"
-    static let imageSize = CGSize(width: 100, height: 100)
+class DoodleCollectionViewCell: UICollectionViewCell {
+    static let identifier = "DoodleCollectionViewCell"
+    static let imageSize = CGSize(width: 110, height: 50)
     
     private let imageView = UIImageView()
     

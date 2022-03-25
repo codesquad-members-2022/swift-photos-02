@@ -15,12 +15,9 @@ class PhotosTests: XCTestCase {
     }
     
     func testFetchThumbnails() throws {
-        
-        let manager = PhotoThumbnailManager()
-        
         let promise = expectation(description: "Image Fetch Success")
         
-        manager.setImages {
+        let manager = PhotoThumbnailManager {
             promise.fulfill()
         }
         
