@@ -22,14 +22,16 @@ class DoodleManager {
         return decoder
     }()
     
-    private var doodles = [Doodle]()
-    var doodlesCount: Int {
-        return doodles.count
+    private var doodleImageData = [Data?]()
+    var doodleImageDataCount: Int {
+        return doodleImageData.count
     }
     
-    subscript(index: Int) -> Doodle? {
-        guard 0 <= index, index < doodles.count else { return nil }
-        return doodles[index]
+    private var doodleMetadata = [Doodle]()
+    
+    subscript(index: Int) -> Data? {
+        guard 0 <= index, index < doodleImageData.count else { return nil }
+        return doodleImageData[index]
     }
     
     private let didUpdate: ()->Void
@@ -49,7 +51,7 @@ class DoodleManager {
         let url = Bundle.main.url(forResource: resource, withExtension: ext)
         self.getJSON(from: url)
         self.decodeJSON()
-        didUpdate()
+        self.requestImageData()
     }
     
     private func getJSON(from url: URL?) {
@@ -66,9 +68,23 @@ class DoodleManager {
         }
         
         do {
-            self.doodles = try decoder.decode([Doodle].self, from: doodleJSONData)
+            self.doodleMetadata = try decoder.decode([Doodle].self, from: doodleJSONData)
         } catch {
             print(error)
+        }
+    }
+    
+    private func requestImageData() {
+        doodleImageData = [Data?].init(repeating: nil, count: doodleMetadata.count)
+        for (index, metadata) in doodleMetadata.enumerated() {
+            URLSession.init(configuration: .default).dataTask(with: metadata.imageURL) { data, response, error in
+                guard error != nil else { return }
+                self.doodleImageData[index] = data
+                
+                if index == self.doodleImageDataCount-1 {
+                    self.didUpdate()
+                }
+            }.resume()
         }
     }
 }
