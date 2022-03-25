@@ -10,6 +10,8 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class DoodleViewController: UICollectionViewController {
+    
+    private var manager: DoodleManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,12 @@ class DoodleViewController: UICollectionViewController {
         self.navigationItem.title = "Doodles"
         let closeButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close))
         self.navigationItem.setRightBarButton(closeButton, animated: false)
-
+        
+        manager = DoodleManager(forResource: "doodle", withExtension: "json") {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     @objc func close() {
